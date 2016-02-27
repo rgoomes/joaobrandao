@@ -12,7 +12,7 @@ Number seq[D+1], sol[D+1], *beg = seq, *end, *bound_end, ones[D+1], *one_beg = o
 int n, best = 0, best_end;
 long int paths;
 
-int ubound[D+1], bests[D+1] = {
+int bests[D+1], ubound[D+1] = {
 	 1,  2,  2,  3,  4,  4,  4,  4,  5,  5,
 	 6,  6,  7,  8,  8,  8,  8,  8,  8,  9,
 	 9,  9,  9, 10, 10, 11, 11, 11, 11, 12,
@@ -24,10 +24,8 @@ int ubound[D+1], bests[D+1] = {
 	22, 23, 23, 24, 24, 24, 24, 24, 24, 24,
 	24, 25, 25, 25, 26, 26, 26, 26, 26, 27,
 	27, 27, 27, 28, 28, 28, 28, 28, 28, 28,
-	29, 29, 29, 30, 30, 30,
-	/*     FROM HERE BESTS NOT KNOWN     */
-							 0,  0,  0,	 0,
-	 0,  0,  0,  0,  0,  0,  0,  0
+	29, 29, 29, 30, 30, 30, 30, 30, 30, 30,
+	31, 32, 32, 32, 32, 32, 32, 32
 };
 
 inline int distance(Number *cur, Number *cur_beg){ return cur - cur_beg; }
@@ -56,8 +54,6 @@ inline bool fast_isvalid(Number *end, Number *it){
 void store_solution(Number *it, int nlen){
 	paths++;
 
-	if(nlen > 30)
-		int_solution(beg, it);
 	if(nlen > best){
 		best = nlen;
 		best_end = distance(it, beg);
